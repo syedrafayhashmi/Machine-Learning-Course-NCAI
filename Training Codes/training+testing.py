@@ -8,7 +8,8 @@ from PIL import Image
 import numpy as np
 img = Image.open("img.jpg")
 img.load()
-myimage = np.asarray(img,dtypye = "int32")
+img = np.asarray(img, dtype = "int32")
+print(img)
 n = 10  # how many digits we will display
 plt.figure(figsize=(20, 4))
 for i in range(n):
@@ -23,6 +24,8 @@ plt.close()
 print("Previous X_train shape: {} \nPrevious Y_train shape:{}".format(X_train.shape, Y_train.shape))
 X_train = X_train.reshape(60000, 784)     
 X_test = X_test.reshape(10000, 784)
+img  = img.resize(img,(1,28,28))
+img = img.reshape(1,784)
 X_train = X_train.astype('float32')     
 X_test = X_test.astype('float32')     
 X_train /= 255    
@@ -55,8 +58,10 @@ model.fit(X_train, Y_train, batch_size=batch_size, epochs=10, verbose= 1)
 score = model.evaluate(X_test, Y_test, verbose=1)
 print('\n''Test accuracy:', score[1])
 mask = range(10,20)
-X_valid = X_test[mask]
+#X_valid = X_test[mask]
+X_valid = myimg
 y_pred = model.predict_classes(X_valid)
+#y_pred = model.predict_classes(myimg)
 print(y_pred)
 plt.figure(figsize=(20, 4))
 for i in range(n):
