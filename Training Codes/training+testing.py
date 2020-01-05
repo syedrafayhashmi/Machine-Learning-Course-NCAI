@@ -41,10 +41,10 @@ model.add(Dense(classes, activation='softmax'))
 
 # Compilation
 model.compile(loss='categorical_crossentropy', 
-    metrics=['accuracy'], optimizer='sgd')
+    metrics=['accuracy'], optimizer='Adam')
 model.summary()
 # Fitting on Data
-model.fit(X_train, Y_train, batch_size=batch_size, epochs=10, verbose=2)
+model.fit(X_train, Y_train, batch_size=batch_size, epochs=10, verbose= 1)
 ###5.Test
 
 score = model.evaluate(X_test, Y_test, verbose=1)
