@@ -4,6 +4,11 @@ from keras.layers.core import Dense, Activation
 from keras.utils import np_utils
 (X_train, Y_train), (X_test, Y_test) = mnist.load_data()
 import matplotlib.pyplot as plt
+from PIL import Image
+import numpy as np
+img = Image.open("img.jpg")
+img.load()
+myimage = np.asarray(img,dtypye = "int32")
 n = 10  # how many digits we will display
 plt.figure(figsize=(20, 4))
 for i in range(n):
